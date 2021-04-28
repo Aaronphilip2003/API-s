@@ -68,5 +68,4 @@ sub_btn.place(x=100,y=100)
 
 
 
-
 root.mainloop()
