@@ -38,7 +38,7 @@ url = "https://currency-exchange.p.rapidapi.com/exchange"
 
 
 headers = {
-    'x-rapidapi-key': "3b6b9c60b2mshef89cf1e6eaa609p1835d5jsn6f3ccbfcf3a9",
+    'x-rapidapi-key': "API-KEY",
     'x-rapidapi-host': "currency-exchange.p.rapidapi.com"
     }
 
@@ -55,7 +55,8 @@ def submit():
 
     response1=response.text
 
-    print(response1)
+    label3=Label(root,text=response1)
+    label3.place(x=100,y=150)
 
 
 
