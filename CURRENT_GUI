@@ -9,14 +9,9 @@ root.title("CURRENCY GUI")
 
 to=tk.StringVar()
 from1=tk.StringVar()
+response1=tk.StringVar()
 
 
-def submit():
-    to1 = to.get()
-    from2 = from1.get()
-
-    print("The name is : " + to1)
-    print("The password is : " + from2)
 
 
 
@@ -38,28 +33,39 @@ e1.place(x=240,y=10)
 e2=Entry(root,width=10,borderwidth=3,textvariable=from1)
 e2.place(x=250,y=50)
 
+url = "https://currency-exchange.p.rapidapi.com/exchange"
+
+
+
+headers = {
+    'x-rapidapi-key': "3b6b9c60b2mshef89cf1e6eaa609p1835d5jsn6f3ccbfcf3a9",
+    'x-rapidapi-host': "currency-exchange.p.rapidapi.com"
+    }
+
+
+
+
+def submit():
+    to1 = to.get()
+    from2 = from1.get()
+
+    querystring = {"to": to1, "from": from2, "q": "1.0"}
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+    response1=response.text
+
+    print(response1)
+
+
 
 sub_btn=tk.Button(root,text = 'Submit', command = submit)
 sub_btn.place(x=100,y=100)
 
 
-#API_Work
 
-url = "https://currency-exchange.p.rapidapi.com/exchange"
 
-#
-# querystring = {"to":to,"from":from1,"q":"1.0"}
-#
-# headers = {
-#     'x-rapidapi-key': "API",
-#     'x-rapidapi-host': "currency-exchange.p.rapidapi.com"
-#     }
-#
-# response = requests.request("GET", url, headers=headers, params=querystring)
-#
-# ans=response.text
-#
-# print(ans)
+
 
 
 root.mainloop()
